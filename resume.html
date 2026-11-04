@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samir Adhikari - Resume</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #0284c7;
+            --primary-light: #e0f2fe;
+            --border: #e2e8f0;
+            --bg: #ffffff;
+            --bg-web: #f1f5f9;
+            --font: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Forces background colors to print */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-web);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Resume Container (A4 Size) --- */
+        .resume-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--bg);
+            padding: 50px 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            position: relative;
+            border-top: 8px solid var(--primary);
+        }
+
+        /* --- Print Button --- */
+        .print-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--text-main);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.4);
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--text-main);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* --- Layout Grid --- */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 35px;
+        }
+
+        .left-col { display: flex; flex-direction: column; gap: 30px; }
+        .right-col { display: flex; flex-direction: column; gap: 30px; }
+
+        /* --- Summary --- */
+        .summary {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        /* --- Experience --- */
+        .job {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-light);
+            page-break-inside: avoid; /* Prevents job from splitting on PDF */
+        }
+        .job:last-child { margin-bottom: 0; }
+
+        .job::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 3px var(--bg);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap; /* Fixes overlapping text */
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .job-company {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .job-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            background: var(--bg-web);
+            padding: 2px 10px;
+            border-radius: 20px;
+            white-space: nowrap; /* Keeps date on one line */
+        }
+
+        .job-details {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .job-details li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            line-height: 1.5;
+            page-break-inside: avoid;
+        }
+
+        .job-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* --- Skills & Tags --- */
+        .skill-group {
+            margin-bottom: 15px;
+            page-break-inside: avoid;
+        }
+        .skill-group h4 {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            list-style: none;
+        }
+        .skills-list li {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* --- Education --- */
+        .edu-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid var(--border);
+            page-break-inside: avoid;
+        }
+        .edu-item:last-child { margin-bottom: 0; }
+        .edu-degree {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+        .edu-school {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+        .edu-date {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========================================= */
+        /* --- PRINT FIXES (PDF GENERATION) --- */
+        /* ========================================= */
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm 12mm; /* Standard tight margins for A4 */
+            }
+            body {
+                background-color: #ffffff !important;
+            }
+            .resume-container {
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                border-top: none !important;
+                max-width: 100% !important;
+            }
+            .print-btn {
+                display: none !important;
+            }
+            /* Force layout to not break awkwardly */
+            .resume-grid {
+                display: grid !important;
+                grid-template-columns: 2.2fr 1fr !important;
+                gap: 25px !important;
+            }
+            .job, .edu-item, .skill-group {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            /* Ensure colors print exactly as seen */
+            .skills-list li {
+                border: 1px solid #bae6fd !important;
+                background-color: #e0f2fe !important;
+                color: #0284c7 !important;
+            }
+            .job-date {
+                border: 1px solid #cbd5e1 !important;
+            }
+            /* Hide link URLs that sometimes get appended in print */
+            a[href]::after {
+                content: none !important;
+            }
+        }
+
+        /* --- Responsive Web View --- */
+        @media (max-width: 768px) {
+            .resume-container { padding: 30px 20px; margin: 20px 10px; }
+            .resume-grid { grid-template-columns: 1fr; gap: 30px; }
+            h1 { font-size: 2.2rem; }
+        }
+       /* --- Header --- */
+        header {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--text-main);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .profile-pic {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-light);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            /* Ensures image prints properly */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Organizes the contact info into a neat grid */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            font-size: 1rem;
+            width: 16px; /* Keeps icons perfectly aligned */
+            text-align: center;
+        }
+                @media (max-width: 768px) {
+            /* ... existing mobile styles ... */
+            
+            /* Add this for the header */
+            header {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 20px;
+            }
+            .header-right {
+                margin-left: 0;
+            }
+            .contact-info {
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">
+        <i class="fas fa-file-pdf"></i> Save as PDF
+    </button>
+
+    <div class="resume-container">
+        <!-- Header -->
+         <header>
+            <div class="header-top">
+                <div class="name-title">
+                    <h1>Samir Adhikari</h1>
+                    <div class="subtitle">QA | Developer | SEO</div>
+                </div>
+                <div class="header-right">
+                    <!-- Replace 'profile.jpg' with your actual image file name -->
+                    <img src="profile.jpg" alt="Samir Adhikari" class="profile-pic">
+                </div>
+            </div>
+            <div class="contact-info">
+                <a href="tel:+9779869691746"><i class="fas fa-phone-alt"></i> +977-9869691746</a>
+                <a href="mailto:samir.adhikari20@gmail.com"><i class="fas fa-envelope"></i> samir.adhikari20@gmail.com</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</a>
+                <a href="https://www.linkedin.com/in/samir-adhikari-928ba370/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://samiradhikari.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+                <a href="https://github.com/mesamir" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </header>
+        
+
+        <!-- Body Grid -->
+        <div class="resume-grid">
+            
+            <!-- Left Column -->
+            <div class="left-col">
+                
+                <!-- Summary -->
+                <section>
+                    <div class="section-title"><i class="fas fa-user-tie"></i> Professional Summary</div>
+                    <p class="summary">
+                        Dedicated QA Professional with proven experience at Bent Ray Technologies. I thrive on breaking down complex software to ensure reliability and user-friendliness, with a deep focus on manual testing, API validation, load testing, and meticulous defect tracking. Actively upskilling in test automation using Selenium WebDriver with Python. Committed to continuous learning and delivering high-quality software solutions.
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section>
+                    <div class="section-title"><i class="fas fa-briefcase"></i> Experience</div>
+                    
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="job-title">QA Developer (Full-Time)</div>
+                            <div class="job-date">Oct 2025 – Oct 2026</div>
+                        </div>
+                        <div class="job-company">Bent Ray Technologies Pvt. Ltd. | Lalitpur, Nepal</div>
+                        <ul class="job-details">
+                            <li>Performed comprehensive manual testing of web applications to ensure alignment with business and functional requirements.</li>
+                            <li>Conducted API testing using Postman, validating request/response flows, status codes, and data consistency.</li>
+                            <li>Performed load and performance testing using Apache JMeter to assess system stability and scalability.</li>
+                            <li>Identified, documented, and prioritized defects with clear reproduction steps and impact analysis in Jira/Quire.</li>
+                            <li>Executed functional, regression, and smoke testing before major releases to ensure product stability.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div class="job-title">QA Intern</div>
+                            <div class="job-date">Jul 2025 – Oct 2025</div>
+                        </div>
+                        <div class="job-company">Bent Ray Technologies Pvt. Ltd. | Lalitpur, Nepal</div>
+                        <ul class="job-details">
+                            <li>Assisted in testing CRM, Accounting, Travel/Tour Management, and Tender Management applications.</li>
+                            <li>Prepared and executed test cases, performed functional, regression, and smoke testing.</li>
+                            <li>Gained practical experience in API testing (Postman), performance testing (JMeter), and database validation (MySQL).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section>
+                    <div class="section-title"><i class="fas fa-project-diagram"></i> Key Projects Tested</div>
+                    <div class="job" style="border-left: none; padding-left: 0;">
+                        <ul class="job-details" style="margin-top: 0;">
+                            <li><strong>CRM Software:</strong> Tested end-to-end lead management, sales pipelines, contact management, and reporting modules.</li>
+                            <li><strong>Accounting Software:</strong> Conducted rigorous testing on financial modules, ensuring data accuracy across multi-tenant environments.</li>
+                            <li><strong>Travel & Tour Platforms:</strong> Validated complex booking engines and multi-dashboard interfaces.</li>
+                            <li><strong>Tender Management:</strong> Verified bidding processes, document management workflows, and secure user permissions.</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-col">
+                
+                <!-- Skills -->
+                <section>
+                    <div class="section-title"><i class="fas fa-code"></i> Skills</div>
+                    
+                    <div class="skill-group">
+                        <h4>Testing & QA</h4>
+                        <ul class="skills-list">
+                            <li>Manual Testing</li>
+                            <li>Regression</li>
+                            <li>Smoke</li>
+                            <li>STLC</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>API & Automation</h4>
+                        <ul class="skills-list">
+                            <li>Postman</li>
+                            <li>Newman</li>
+                            <li>Swagger</li>
+                            <li>Selenium</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Performance</h4>
+                        <ul class="skills-list">
+                            <li>Apache JMeter</li>
+                            <li>Load Testing</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Technical SEO</h4>
+                        <ul class="skills-list">
+                            <li>On-Page SEO</li>
+                            <li>Core Web Vitals</li>
+                            <li>Schema Markup</li>
+                            <li>GSC</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Languages & DB</h4>
+                        <ul class="skills-list">
+                            <li>SQL</li>
+                            <li>MySQL</li>
+                            <li>HTML/CSS</li>
+                            <li>JS</li>
+                            <li>Python</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section>
+                    <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
+                    
+                    <div class="edu-item">
+                        <div class="edu-degree">Bachelor's in Computer Applications (BCA)</div>
+                        <div class="edu-school">IGNOU (Indira Gandhi National Open University)</div>
+                        <div class="edu-date">Graduated: June/July 2026</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">Intermediate Level (+2)</div>
+                        <div class="edu-school">Active Academy College, Kathmandu</div>
+                        <div class="edu-date">2012</div>
+                    </div>
+
+                    <div class="edu-item">
+                        <div class="edu-degree">School Leaving Certificate (SLC)</div>
+                        <div class="edu-school">New Horizon Academy School</div>
+                        <div class="edu-date">2008</div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
