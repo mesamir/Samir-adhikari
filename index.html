@@ -3,500 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samir Adhikari · QA & Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        
-        :root {
-            --primary: #2d818f;
-            --dark: #0a2a36;
-            --text: #2b5062;
-            --bg: #f4f7fc;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background: var(--bg);
-            color: #1a2b3c;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(145deg, #1d3b4c, #2b5e6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #2a4858;
-            font-weight: 500;
-            transition: 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-
-       
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            align-items: center;
-            margin-bottom: 4rem;
-            background: var(--white);
-            border-radius: 2rem;
-            padding: 3rem;
-            box-shadow: 0 15px 35px -12px rgba(0,30,40,0.1);
-        }
-
-        .hero-content { flex: 1 1 450px; }
-
-        .hero-badge {
-            background: #d4eaf0;
-            color: #115166;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--dark);
-        }
-
-        .hero-highlight {
-            color: var(--primary);
-            border-bottom: 4px solid #9ecfd9;
-        }
-
-        .hero-desc {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin: 1.5rem 0 2rem;
-            max-width: 600px;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-        }
-
-        .stat-label { font-size: 0.85rem; color: #667; }
-
-        .hero-avatar {
-        flex: 0 0 280px;
-        height: 280px;
-        background: #ecf9ff;
-        /* This creates the unique organic shape */
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        border: 4px solid white;
-        box-shadow: 10px 10px 30px rgba(0,0,0,0.05);
-        overflow: hidden; /* This clips the image to the border-radius shape */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .hero-avatar:hover {
-        border-radius: 50%; /* Smoothly turns into a circle on hover */
-        transform: scale(1.02);
-    }
-
-    .hero-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Prevents the image from stretching */
-    }hero-avatar:hover { border-radius: 50%; }
-
-      
-        .filter-btns { display: flex; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .filter-btn {
-            background: white;
-            border: 1px solid #bdd7e3;
-            padding: 0.5rem 1.5rem;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.8rem;
-            border: 1px solid #eef2f6;
-            transition: 0.3s;
-        }
-        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        .skill-icon {
-            width: 50px;
-            height: 50px;
-            background: #e1f2f7;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .skill-card h3 { margin-bottom: 0.8rem; color: var(--dark); }
-        .skill-card ul { list-style: none; font-size: 0.95rem; color: var(--text); }
-        .skill-card li { margin-bottom: 0.4rem; display: flex; align-items: center; gap: 8px; }
-
-       
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 2rem;
-            border: 1px solid #d3e6f0;
-            height: 100%;
-        }
-
-        .tag {
-            background: #def0f5;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        
-        .exp-edu-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 3rem;
-            margin: 4rem 0;
-        }
-
-        @media (max-width: 900px) {
-            .exp-edu-grid { grid-template-columns: 1fr; }
-            .hero { padding: 2rem; text-align: center; justify-content: center; }
-            .hero-avatar { order: -1; }
-            .hero-stats { justify-content: center; }
-        }
-
-        .hidden { display: none !important; }
-
-        .contact-bar {
-            background: white;
-            border-radius: 50px;
-            padding: 1.5rem 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-        }
-    </style>
+    <title>Samir Adhikari | QA Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="logo">
-                Samir Adhikari 
-                <span style="font-size: 0.9rem; background: #e4f1f5; padding: 0.3rem 0.8rem; border-radius: 40px; color: #1b5b6b; margin-left: 10px; -webkit-text-fill-color: #1b5b6b;">QA + Dev</span>
-            </div>
-            <div class="nav-links">
-                <a href="#skills">Expertise</a>
-                <a href="#projects">Work</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
 
-        <header class="hero">
-            <div class="hero-content">
-                <span class="hero-badge"><i class="fas fa-bug"></i> QA Engineer · Automation Specialist in Training</span>
-                <h1>Breaking code, <br><span class="hero-highlight">building quality</span></h1>
-                <p class="hero-desc">I bridge the gap between development and quality assurance. 7 months of professional testing experience backed by a strong foundation in Python, SQL, and JS.</p>
-                <div class="hero-stats">
-                    <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Projects Tested</span></div>
-                    <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Core Domains</span></div>
-                    <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Langs & Tools</span></div>
+    <!-- Navigation -->
+     <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Samir<span>.QA</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#api-testing">API</a></li>
+                <li><a href="#performance">JMeter</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#certificate">Certificate</a></li>
+                <li><a href="#contact" class="btn-primary">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Light/Dark Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
                 </div>
-            </div>
-            <div class="hero-avatar">
-                <img src="samir.JPG" alt="Samir Adhikari Professional Portrait">
-
-            </div>
-        </header>
-
-        <section id="skills">
-            <div class="filter-btns">
-                <button class="filter-btn active" data-filter="all">All Expertise</button>
-                <button class="filter-btn" data-filter="qa">QA Focused</button>
-                <button class="filter-btn" data-filter="dev">Dev Skills</button>
-            </div>
-
-            <div class="skill-grid" id="skillGrid">
-                <div class="skill-card" data-category="qa">
-                    <div class="skill-icon"><i class="fas fa-clipboard-list"></i></div>
-                    <h3>Manual & Regression</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Test Case Design</li>
-                        <li><i class="fas fa-check-circle"></i> Functional / Smoke Testing</li>
-                        <li><i class="fas fa-check-circle"></i> Defect Tracking (Quire/Excel)</li>
-                    </ul>
-                </div>
-                <div class="skill-card" data-category="qa dev">
-                    <div class="skill-icon"><i class="fas fa-robot"></i></div>
-                    <h3>Automation</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Selenium + Python</li>
-                        <li><i class="fas fa-check-circle"></i> Maintainable Locators</li>
-                        <li><i class="fas fa-check-circle"></i> PyTest Basics</li>
-                    </ul>
-                </div>
-                <div class="skill-card" data-category="dev">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <h3>SQL & Databases</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> MySQL & Firebase</li>
-                        <li><i class="fas fa-check-circle"></i> Complex Data Validation</li>
-                        <li><i class="fas fa-check-circle"></i> Multi-tenant Accuracy</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" style="margin-top: 5rem;">
-            <h2 style="font-size: 2rem; color: var(--dark);"><i class="fas fa-rocket"></i> Featured Work</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="tag">QA LEAD</div>
-                    <h3 style="margin: 1rem 0;">CRM Platform</h3>
-                    <p>End-to-end testing of lead management and reporting. Identified 15+ critical bugs prior to UAT release.</p>
-                </div>
-                <div class="project-card">
-                    <div class="tag">SQL & QA</div>
-                    <h3 style="margin: 1rem 0;">Accounting Core</h3>
-                    <p>Verified financial data integrity across 10+ tenant environments using complex SQL queries.</p>
-                </div>
-            </div>
-        </section>
-        <section id="test-reports" style="margin-top: 5rem;">
-        <h2 style="font-size: 2rem; color: var(--dark); margin-bottom: 1.5rem;">
-            <i class="fas fa-file-alt"></i> Sample Test Report 
-            <span class="title-light" style="font-size: 1rem; color: #667; font-weight: 400;">(Project: CRM Module v2.1)</span>
-        </h2>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-            <div style="background: #fff; padding: 1.5rem; border-radius: 1rem; border: 1px solid #eef2f6; text-align: center;">
-                <div style="color: #667; font-size: 0.85rem; text-transform: uppercase; font-weight: 600;">Total Cases</div>
-                <div style="font-size: 2rem; font-weight: 700; color: var(--dark);">142</div>
-            </div>
-            <div style="background: #fff; padding: 1.5rem; border-radius: 1rem; border: 1px solid #eef2f6; text-align: center; border-bottom: 4px solid #28a745;">
-                <div style="color: #667; font-size: 0.85rem; text-transform: uppercase; font-weight: 600;">Passed</div>
-                <div style="font-size: 2rem; font-weight: 700; color: #28a745;">128</div>
-            </div>
-            <div style="background: #fff; padding: 1.5rem; border-radius: 1rem; border: 1px solid #eef2f6; text-align: center; border-bottom: 4px solid #dc3545;">
-                <div style="color: #667; font-size: 0.85rem; text-transform: uppercase; font-weight: 600;">Failed</div>
-                <div style="font-size: 2rem; font-weight: 700; color: #dc3545;">14</div>
-            </div>
-            <div style="background: #fff; padding: 1.5rem; border-radius: 1rem; border: 1px solid #eef2f6; text-align: center; border-bottom: 4px solid #ffc107;">
-                <div style="color: #667; font-size: 0.85rem; text-transform: uppercase; font-weight: 600;">Pass Rate</div>
-                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">90.1%</div>
             </div>
         </div>
+    </nav>
 
-        <div style="background: white; border-radius: 1.5rem; border: 1px solid #d3e6f0; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
-                    <thead>
-                        <tr style="background: #f8fbfe; border-bottom: 1px solid #eef2f6;">
-                            <th style="padding: 1.2rem;">ID</th>
-                            <th style="padding: 1.2rem;">Summary</th>
-                            <th style="padding: 1.2rem;">Priority</th>
-                            <th style="padding: 1.2rem;">Status</th>
-                            <th style="padding: 1.2rem;">Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid #f4f7fc;">
-                            <td style="padding: 1rem 1.2rem; font-weight: 600;">BUG-001</td>
-                            <td style="padding: 1rem 1.2rem;">Lead conversion fails when phone number has extensions</td>
-                            <td style="padding: 1rem 1.2rem;"><span style="background: #ffe5e5; color: #d63031; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">CRITICAL</span></td>
-                            <td style="padding: 1rem 1.2rem;"><span style="color: #636e72;">Fixed</span></td>
-                            <td style="padding: 1rem 1.2rem;">Functional</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #f4f7fc;">
-                            <td style="padding: 1rem 1.2rem; font-weight: 600;">BUG-002</td>
-                            <td style="padding: 1rem 1.2rem;">Dashboard charts overlap on resolutions below 1366px</td>
-                            <td style="padding: 1rem 1.2rem;"><span style="background: #fff4e5; color: #e67e22; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">HIGH</span></td>
-                            <td style="padding: 1rem 1.2rem;"><span style="color: #636e72;">Open</span></td>
-                            <td style="padding: 1rem 1.2rem;">UI/UX</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #f4f7fc;">
-                            <td style="padding: 1rem 1.2rem; font-weight: 600;">BUG-003</td>
-                            <td style="padding: 1rem 1.2rem;">SQL syntax error when searching with special characters (%)</td>
-                            <td style="padding: 1rem 1.2rem;"><span style="background: #ffe5e5; color: #d63031; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">CRITICAL</span></td>
-                            <td style="padding: 1rem 1.2rem;"><span style="color: #636e72;">In Review</span></td>
-                            <td style="padding: 1rem 1.2rem;">Database</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem 1.2rem; font-weight: 600;">BUG-004</td>
-                            <td style="padding: 1rem 1.2rem;">Export to CSV missing "Created At" column values</td>
-                            <td style="padding: 1rem 1.2rem;"><span style="background: #eef2f6; color: #636e72; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">LOW</span></td>
-                            <td style="padding: 1rem 1.2rem;"><span style="color: #636e72;">Fixed</span></td>
-                            <td style="padding: 1rem 1.2rem;">Functional</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content reveal">
+            <p class="greeting">Hello, I'm</p>
+            <h1>Samir Adhikari</h1>
+            <h2 class="typing-text">QA Engineer</h2>
+            <p class="summary">Dedicated QA Professional with over a year of proven experience at Bent Ray Technologies. I thrive on breaking down complex software to ensure its reliability and user-friendliness, with a deep focus on manual testing and meticulous defect tracking.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Hire Me</a>
+                <a href="#experience" class="btn-secondary">View Experience</a>
+            </div>
+            <div class="social-links">
+                <a href="https://mesamir.github.io/portfolio/" target="_blank"><i class="fas fa-globe"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="hero-image reveal">
+            <!-- Replace with your actual photo saved as profile.jpg -->
+            <img src="profile.jpg" alt="Samir Adhikari" onerror="this.src='https://via.placeholder.com/350x350/1e293b/38bdf8?text=Samir+Adhikari'">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title reveal">About <span>Me</span></h2>
+        <div class="about-content reveal">
+            <div class="about-text">
+                <p>I am a QA Professional based in Kathmandu, Nepal. I have completed my Bachelor's degree in Computer Applications (BCA) from IGNOU. Alongside my academic background, I am actively enhancing my skills in test automation using Selenium WebDriver with Python and improving workflow management.</p>
+                <p>I am committed to continuous learning and delivering high-quality software solutions. My expertise spans manual testing, API testing, performance testing, and basic automation.</p>
+                <ul class="personal-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                    <li><i class="fas fa-envelope"></i> samir.adhikari20@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +977-9869691746</li>
+                    <li><i class="fas fa-calendar-alt"></i> DOB: 01-01-1993</li>
+                </ul>
             </div>
         </div>
     </section>
 
-        <div class="exp-edu-grid">
-            <div class="experience">
-        <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-briefcase"></i> Experience</h2>
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-darker">
+        <h2 class="section-title reveal">Technical <span>Skills</span></h2>
+        <div class="skills-grid reveal">
+            <div class="skill-card">
+                <i class="fas fa-bug"></i>
+                <h3>Manual Testing</h3>
+                <p>SDLC/STLC, Test Case Design, Execution, Functional, Regression, Smoke, Alpha Testing.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>API Testing</h3>
+                <p>Postman, Newman, Request/Response Validation, Status Codes, Data Integrity.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Performance Testing</h3>
+                <p>Apache JMeter for load testing, system stability, scalability, and response behavior.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-robot"></i>
+                <h3>Automation (Upskilling)</h3>
+                <p>Selenium WebDriver with Python, Automated UI test scripts.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-search"></i>
+                <h3>Technical SEO</h3>
+                <p>On-Page & Off-Page Optimization, Core Web Vitals, Schema Markup, GSC.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h3>Languages & DB</h3>
+                <p>HTML, SQL (MySQL, PostgreSQL), Python, Java, JavaScript, C, C++.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Testing Showcase (Imported from indexs) -->
+    <section id="api-testing" class="section">
+        <h2 class="section-title reveal">API Testing <span>Showcase</span></h2>
+        <p class="section-sub reveal" style="text-align:center; margin-bottom: 40px; color: var(--text-muted);">Real test cases from CRM & Accounting system QA. Validating endpoints, schemas, auth, and error handling.</p>
+
+        <div class="api-showcase reveal">
+            <div class="api-tabs">
+                <button class="api-tab active" onclick="showTab('tab-results', this)">Test Results</button>
+                <button class="api-tab" onclick="showTab('tab-script', this)">Postman Script</button>
+                <button class="api-tab" onclick="showTab('tab-newman', this)">Newman CLI</button>
+            </div>
+
+            <!-- Results -->
+            <div class="api-panel active" id="tab-results">
+                <div class="api-row header">
+                    <div>Method</div>
+                    <div>Endpoint / Summary</div>
+                    <div class="col3">Status</div>
+                    <div class="col4">Time</div>
+                    <div class="col5">Tool</div>
+                </div>
+                <div class="api-row">
+                    <div><span class="method-badge method-post">POST</span></div>
+                    <div><strong style="color:var(--text-main);">/auth/login</strong> — JSON Schema & JWT token generation</div>
+                    <div class="col3"><span class="status-pass">PASS</span></div>
+                    <div class="col4">182ms</div>
+                    <div class="col5">Postman</div>
+                </div>
+                <div class="api-row">
+                    <div><span class="method-badge method-get">GET</span></div>
+                    <div><strong style="color:var(--text-main);">/leads/{id}</strong> — Returns 404, not 500, for missing IDs</div>
+                    <div class="col3"><span class="status-warn">WARN</span></div>
+                    <div class="col4">240ms</div>
+                    <div class="col5">Swagger</div>
+                </div>
+                <div class="api-row">
+                    <div><span class="method-badge method-post">POST</span></div>
+                    <div><strong style="color:var(--text-main);">/leads/create</strong> — Phone extension edge case fails validation</div>
+                    <div class="col3"><span class="status-fail">FAIL</span></div>
+                    <div class="col4">310ms</div>
+                    <div class="col5">Postman</div>
+                </div>
+                <div class="api-row">
+                    <div><span class="method-badge method-put">PUT</span></div>
+                    <div><strong style="color:var(--text-main);">/accounts/{id}</strong> — Multi-tenant data isolation verified</div>
+                    <div class="col3"><span class="status-pass">PASS</span></div>
+                    <div class="col4">198ms</div>
+                    <div class="col5">Postman</div>
+                </div>
+            </div>
+
+            <!-- Script tab -->
+            <div class="api-panel" id="tab-script">
+                <div class="code-block">
+                    <span class="code-line"><span class="cmt">// ── POST /auth/login — Test Script (Postman) ──────────</span></span>
+                    <span class="code-line"><span class="cmt">// 1. Status Code check</span></span>
+                    <span class="code-line"><span class="fn">pm</span>.<span class="key">test</span>(<span class="str">"Status is 200 OK"</span>, <span class="kw">function</span>() {</span>
+                    <span class="code-line">  <span class="fn">pm</span>.<span class="key">response</span>.<span class="fn">to</span>.<span class="fn">have</span>.<span class="fn">status</span>(<span class="num">200</span>);</span>
+                    <span class="code-line">});</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="cmt">// 2. JWT token present in response body</span></span>
+                    <span class="code-line"><span class="kw">const</span> jsonData = <span class="fn">pm</span>.<span class="key">response</span>.<span class="fn">json</span>();</span>
+                    <span class="code-line"><span class="fn">pm</span>.<span class="key">test</span>(<span class="str">"JWT token present"</span>, <span class="kw">function</span>() {</span>
+                    <span class="code-line">  <span class="fn">pm</span>.<span class="key">expect</span>(jsonData).<span class="fn">to</span>.<span class="fn">have</span>.<span class="fn">property</span>(<span class="str">"token"</span>);</span>
+                    <span class="code-line">  <span class="fn">pm</span>.<span class="key">expect</span>(jsonData.<span class="key">token</span>).<span class="fn">to</span>.<span class="fn">be</span>.<span class="fn">a</span>(<span class="str">"string"</span>);</span>
+                    <span class="code-line">});</span>
+                </div>
+            </div>
+
+            <!-- Newman -->
+            <div class="api-panel" id="tab-newman">
+                <div class="code-block">
+                    <span class="code-line"><span class="cmt"># Install Newman globally</span></span>
+                    <span class="code-line"><span class="key">npm</span> install -g newman newman-reporter-htmlextra</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="cmt"># Run collection with HTML report output</span></span>
+                    <span class="code-line"><span class="key">newman</span> run CRM-API-Tests.postman_collection.json \</span>
+                    <span class="code-line">  --environment staging.postman_environment.json \</span>
+                    <span class="code-line">  --reporters cli,htmlextra \</span>
+                    <span class="code-line">  --reporter-htmlextra-export reports/api-report.html</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="cmt"># Sample output ─────────────────────────────</span></span>
+                    <span class="code-line"><span class="fn">Newman</span> run complete!</span>
+                    <span class="code-line">  Requests:  <span class="num">42</span>   │  Passed: <span class="num">38</span>   │  Failed: <span class="num">4</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JMETER / Performance Testing (Imported from indexs) -->
+    <section id="performance" class="section bg-darker">
+        <h2 class="section-title reveal">Apache <span>JMeter</span></h2>
+        <p class="section-sub reveal" style="text-align:center; margin-bottom: 40px; color: var(--text-muted);">Performance engineering — validating system behaviour under realistic and extreme load conditions.</p>
+
+        <div class="jmeter-grid reveal">
+            <!-- Load Test Results -->
+            <div class="jmeter-card">
+                <h3><i class="fas fa-chart-line" style="color: var(--primary);"></i> CRM Load Test — 500 Users</h3>
+                <div class="metric-grid">
+                    <div class="metric-box">
+                        <div class="metric-val">184<span style="font-size:1rem;">ms</span></div>
+                        <div class="metric-lbl">Avg Response</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-val">99.2<span style="font-size:1rem;">%</span></div>
+                        <div class="metric-lbl">Throughput</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-val">0.8<span style="font-size:1rem;">%</span></div>
+                        <div class="metric-lbl">Error Rate</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-val">412<span style="font-size:1rem;">ms</span></div>
+                        <div class="metric-lbl">P95 Response</div>
+                    </div>
+                </div>
+                <div style="margin-top:1.5rem;">
+                    <div class="perf-bar-row">
+                        <div class="perf-bar-label">POST /login</div>
+                        <div class="perf-bar-track"><div class="perf-bar-fill bar-green" style="width:36%"></div></div>
+                        <div class="perf-bar-val">182ms</div>
+                    </div>
+                    <div class="perf-bar-row">
+                        <div class="perf-bar-label">GET /leads</div>
+                        <div class="perf-bar-track"><div class="perf-bar-fill bar-green" style="width:40%"></div></div>
+                        <div class="perf-bar-val">201ms</div>
+                    </div>
+                    <div class="perf-bar-row">
+                        <div class="perf-bar-label">GET /reports</div>
+                        <div class="perf-bar-track"><div class="perf-bar-fill bar-amber" style="width:65%"></div></div>
+                        <div class="perf-bar-val">326ms</div>
+                    </div>
+                    <div class="perf-bar-row">
+                        <div class="perf-bar-label">POST /export</div>
+                        <div class="perf-bar-track"><div class="perf-bar-fill bar-red" style="width:80%"></div></div>
+                        <div class="perf-bar-val">412ms</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JMeter Plan & Strategy -->
+            <div class="jmeter-card">
+                <h3><i class="fas fa-sitemap" style="color: var(--primary);"></i> Test Plan Structure</h3>
+                <div class="thread-plan">
+                    <div><span class="node">▸ Test Plan</span></div>
+                    <div>&nbsp;&nbsp;<span class="node">▸ Thread Group</span> [<span class="value">500 users · ramp 60s</span>]</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="node">▸ HTTP Request Defaults</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="node">▸ HTTP Cookie Manager</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="node">▸ CSV Data Set Config</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">→</span> <span class="node">POST /auth/login</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">→</span> <span class="node">GET /leads (JSON Extractor)</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">→</span> <span class="node">POST /leads/create</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="node">▸ Aggregate Report</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title reveal">Work <span>Experience</span></h2>
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>QA Developer (Full-Time)</h3>
+                    <h4>Bent Ray Technologies Pvt. Ltd. | Lalitpur, Nepal</h4>
+                    <span class="date">Oct 2025 - Oct 2026</span>
+                    <ul>
+                        <li>Performed comprehensive manual testing of web applications to ensure alignment with business and functional requirements.</li>
+                        <li>Conducted API testing using Postman, validating request/response flows, status codes, and data consistency.</li>
+                        <li>Performed load and performance testing using JMeter to assess system stability and scalability.</li>
+                        <li>Identified, documented, and prioritized defects with clear reproduction steps and impact analysis.</li>
+                        <li>Executed functional, regression, and smoke testing before major releases.</li>
+                        <li>Tracked defects and sprint activities using Quire and structured Excel sheets.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>QA Intern</h3>
+                    <h4>Bent Ray Technologies Pvt. Ltd. | Lalitpur, Nepal</h4>
+                    <span class="date">July 2025 - Oct 2025</span>
+                    <ul>
+                        <li>Assisted in testing CRM, Accounting, Travel/Tour Management, and Tender Management applications.</li>
+                        <li>Prepared and executed test cases, performed functional, regression, and smoke testing.</li>
+                        <li>Gained practical experience in API testing (Postman), performance testing (JMeter), and database validation (MySQL).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section (Imported from indexs) -->
+    <section id="reports" class="section bg-darker">
+        <h2 class="section-title reveal">Sample <span>Test Report</span></h2>
         
-        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border-left: 5px solid var(--primary); margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <strong style="font-size: 1.1rem;">QA Engineer</strong>
-                    <p style="color: var(--primary); font-weight: 600; margin-top: 2px;">Bent Ray Technologies · Full-time</p>
-                </div>
-                <span class="tag" style="background: #e1f2f7;">Jan 2025 – Present</span>
-            </div>
-            <ul style="margin: 1rem 0 0 1.2rem; font-size: 0.92rem; color: var(--text);">
-                <li><strong>API Validation:</strong> Performing end-to-end API testing using <b>Postman</b> and <b>Swagger</b> to verify status codes, JSON schema integrity, and response times.</li>
-                <li><strong>Complex System Testing:</strong> Leading QA efforts for multi-tenant Accounting and CRM systems, ensuring data isolation and business logic accuracy.</li>
-                <li><strong>Defect Lifecycle:</strong> Managing the full bug lifecycle in Jira/Quire, reducing re-reopen rates by providing detailed logs and video reproductions.</li>
-                <li><strong>Regression Suites:</strong> Maintaining a library of 200+ manual test cases to ensure stability during bi-weekly production deployments.</li>
-            </ul>
+        <div class="test-stats reveal">
+            <div class="t-stat total"><div class="t-stat-num">142</div><div class="t-stat-lbl">Total Cases</div></div>
+            <div class="t-stat passed"><div class="t-stat-num">128</div><div class="t-stat-lbl">Passed</div></div>
+            <div class="t-stat failed"><div class="t-stat-num">14</div><div class="t-stat-lbl">Failed</div></div>
+            <div class="t-stat rate"><div class="t-stat-num">90.1%</div><div class="t-stat-lbl">Pass Rate</div></div>
         </div>
 
-        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border-left: 5px solid #aaccda; opacity: 0.9;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <strong>QA Intern</strong>
-                    <p style="color: #597b8a; font-weight: 500;">Bent Ray Technologies</p>
-                </div>
-                <span class="tag" style="background: #f0f4f7; color: #597b8a;">Jun 2024 – Dec 2024</span>
-            </div>
-            <ul style="margin: 0.8rem 0 0 1.2rem; font-size: 0.9rem; color: #5f7e8c;">
-                <li>Assisted in Smoke and Sanity testing for Travel & Tour dashboard modules.</li>
-                <li>Documented initial test scenarios and learned STLC fundamentals.</li>
-                <li>Collaborated with developers to verify fixes in staging environments.</li>
-            </ul>
+        <div class="report-table-wrap reveal">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Summary</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="id-cell">BUG-001</td>
+                        <td>Lead conversion fails when phone number has extensions</td>
+                        <td><span class="badge-crit">CRITICAL</span></td>
+                        <td><span class="status-fx">● Fixed</span></td>
+                        <td>Functional</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">BUG-002</td>
+                        <td>Dashboard charts overlap on resolutions below 1366px</td>
+                        <td><span class="badge-high">HIGH</span></td>
+                        <td><span class="status-open">● Open</span></td>
+                        <td>UI/UX</td>
+                    </tr>
+                    <tr>
+                        <td class="id-cell">BUG-003</td>
+                        <td>SQL syntax error when searching with special characters (%)</td>
+                        <td><span class="badge-crit">CRITICAL</span></td>
+                        <td><span class="status-warn">● In Review</span></td>
+                        <td>Database</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        <div class="drive-link-container reveal">
+            <a href="https://drive.google.com/drive/folders/1cplImeH_77Y6mthjEJ-DTs1xrNVW458F?usp=drive_link" target="_blank" class="btn-primary drive-btn">
+                <i class="fab fa-google-drive"></i> View Full Test Cases on Google Drive
+            </a>
+            <p class="drive-note">Includes Test Plans, Test Scenarios, and Execution Reports.</p>
+        </div>
+    </section>
+
+    <!-- SEO Section (Imported from indexs) -->
+    <section id="seo" class="section">
+        <h2 class="section-title reveal">Technical <span>SEO</span></h2>
+        <div class="seo-grid reveal">
+            <div class="seo-card">
+                <div class="seo-score score-green">96</div>
+                <div class="seo-label">Lighthouse Performance</div>
+                <p style="color:var(--text-muted);font-size:0.82rem;margin-top:0.8rem;">Optimized LCP, CLS, and FID scores through image compression, lazy loading, and render-blocking resource elimination.</p>
+            </div>
+            <div class="seo-card">
+                <div class="seo-score score-teal">100%</div>
+                <div class="seo-label">Schema Coverage</div>
+                <p style="color:var(--text-muted);font-size:0.82rem;margin-top:0.8rem;">Implemented LocalBusiness, BreadcrumbList, FAQ, and Article structured data with zero validation errors.</p>
+            </div>
+            <div class="seo-card">
+                <div class="seo-score score-amber">+40%</div>
+                <div class="seo-label">Organic Visibility</div>
+                <p style="color:var(--text-muted);font-size:0.82rem;margin-top:0.8rem;">Travel client saw 40% increase in impressions after technical audit, crawl error resolution, and Core Web Vitals improvements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Section -->
+    <section id="certificate" class="section bg-darker">
+        <h2 class="section-title reveal">Experience <span>Verification</span></h2>
+        <div class="cert-container reveal">
+            <div class="cert-card" onclick="openModal()">
+                <!-- Ensure your certificate image is named certificate.jpg -->
+                <img src="experience_certificate.jpeg" alt="Experience Certificate - Bent Ray Technologies" class="cert-img">
+                <p><i class="fas fa-search-plus"></i> Click to view the official experience certificate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2 class="section-title reveal">Edu<span>cation</span></h2>
+        <div class="education-grid reveal">
+            <div class="edu-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Bachelor's in Computer Applications (BCA)</h3>
+                <h4>IGNOU (Indira Gandhi National Open University)</h4>
+                <p>Graduation: June/July 2026</p>
+            </div>
+            <div class="edu-card">
+                <i class="fas fa-school"></i>
+                <h3>Intermediate Level (+2) - Management</h3>
+                <h4>Active Academy College, Basundhara, Kathmandu</h4>
+                <p>Computer Science and Hotel Management | 2012</p>
+            </div>
+            <div class="edu-card">
+                <i class="fas fa-book"></i>
+                <h3>School Leaving Certificate (SLC)</h3>
+                <h4>New Horizon Academy School, Machchhegaun</h4>
+                <p>2008</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-darker">
+        <h2 class="section-title reveal">Get In <span>Touch</span></h2>
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h3>Let's talk about testing!</h3>
+                <p>I have recently completed my tenure at Bent Ray Technologies and am currently seeking new opportunities. If you have a project that needs rigorous testing, or a full-time role, feel free to reach out.</p>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>samir.adhikari20@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+977-9869691746</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Kathmandu, Nepal</p>
+                    </div>
+                </div>
+            </div>
+            <form action="https://formspree.io/f/yourid" method="POST" class="contact-form">
+                <!-- Replace 'yourid' with your actual Formspree ID if you want the form to work -->
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="input-group">
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Samir Adhikari. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Image Modal (Lightbox) -->
+    <div id="certModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" src="certificate.jpg" alt="Experience Certificate Full View">
     </div>
-            <div class="education">
-                <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-graduation-cap"></i> Education</h2>
-                <div style="background: white; padding: 1.2rem; border-radius: 1rem; border: 1px solid #c7dee9;">
-                    <strong>BCA (Final Semester)</strong>
-                    <p style="font-size: 0.9rem; color: #667;">IGNOU · Expected March 2026</p>
-                </div>
-            </div>
-        </div>
 
-        <footer id="contact">
-            <div class="contact-bar">
-                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                    <span><i class="fas fa-phone-alt" style="color: var(--primary);"></i> +977-9869691746</span>
-                    <span><i class="far fa-envelope" style="color: var(--primary);"></i> samir.adhikari20@gmail.com</span>
-                </div>
-                <div class="social-links">
-                    <a href="#" style="font-size: 1.5rem; color: var(--dark); margin-left: 1rem;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="font-size: 1.5rem; color: var(--dark); margin-left: 1rem;"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 2rem; color: #889;">&copy; 2025 Samir Adhikari · <span id="dateSpan"></span></p>
-        </footer>
-    </div>
-
-    <script>
-      
-        const dateSpan = document.getElementById('dateSpan');
-        if (dateSpan) dateSpan.innerText = new Date().toLocaleDateString();
-
-       
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.skill-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-                cards.forEach(card => {
-                    const categories = card.getAttribute('data-category').split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
